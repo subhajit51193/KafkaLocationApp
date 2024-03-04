@@ -5,9 +5,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
+/**
+ * 
+ * @author SubhajitSaha
+ * 
+ * Configuration class for kafkaTopicBuilder
+ */
 @Configuration
 public class KafkaConfig {
 
+	/**
+	 * 
+	 * @return: org.apache.kafka.clients.admin.NewTopic -> NewTopic
+	 */
 	@Bean
 	public NewTopic topic() {
 		

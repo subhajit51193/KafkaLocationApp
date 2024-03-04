@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deliveryboy.service.KafkaService;
 
+/**
+ * 
+ * @author SubhajitSaha
+ * 
+ * Controller class for producing topics
+ *
+ */
 @RestController
 @RequestMapping("/location")
 public class LocationController {
@@ -18,10 +25,24 @@ public class LocationController {
 	@Autowired
 	private KafkaService kafkaService;
 	
+	/**
+	 * 
+	 * @return: ResponseEntity<?> -> In this case string
+	 * 
+	 * randomly generates coordinates each time for testing purpose
+	 * and calls update location method to produce location for
+	 * consumer to consume. 
+	 * 
+	 * Loop till 20 is just for testing purpose
+	 */
 	@PostMapping("/update")
 	public ResponseEntity<?> updateLocation(){
 		
-		kafkaService.updateLocation("("+Math.round(Math.random()*100)+" , "+ Math.round(Math.random()*100)+" "+")");
+		for (int i=1;i<=20;i++) {
+			kafkaService.updateLocation("("+Math.round(Math.random()*100)+" , "+ Math.round(Math.random()*100)+" "+")");
+			
+		}
 		return new ResponseEntity<>(Map.of("messahe","locationUpdated"),HttpStatus.OK);
+		
 	}
 }
