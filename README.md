@@ -10,6 +10,30 @@ Location is being generated randomly from one service and being consumed by anot
 - Random Location Producr
 - Location details being consumed and updated to subscribers or consumers at real time
 
+## Kafka Commands for windows used in this project via cmd after selecting kafka files that contains bin folder
+
+Start Zookeeper server
+```
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+```
+Start kafka server
+```
+bin\windows\kafka-server-start.bat config/server.properties
+```
+Create Topics
+```
+bin\windows\kafka-topics.sh --create --topic user-topic --bootstrap-server localhost:9092
+```
+Produce new Topics for testing
+```
+bin\windows\kafka-console-producer.bat --topic user-topic --bootstrap-server localhost:9092
+>Testing Message
+```
+Consume created topics for testing
+```
+bin\windows\kafka-console-consumer.bat --topic user-topic --from-beginning --bootstrap-server localhost:9092
+```
+
 ## Configurations for Consumer Service
 
 Check following configurations Change DB details accordingly
